@@ -1,0 +1,13 @@
+# Object files
+*.o
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Vim swap files
+*.swp
