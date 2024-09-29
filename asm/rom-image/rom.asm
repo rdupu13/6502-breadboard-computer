@@ -55,20 +55,16 @@ PORTA_NH = $600F
 reset: 
 			jsr via_init
 			jsr lcd_init
-			jsr kb_init
  
 			ldx #$00
 load:
 			lda data,x
-			beq main_loop
-			sta KB_BUFFER,x
-			inc KB_WPTR
+			beq main
 			inx
 			jmp load
  
-main_loop:
-			jsr check_kb_buffer
-			jmp main_loop
+main:
+			jmp main
  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -111,7 +107,7 @@ nmi_data:
 	.org $C000
 
 data:
-	.string "hewwo worwd >.<"
+	.string "hellaur! :D"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
