@@ -18,8 +18,6 @@
 ; Subroutine: Chip initialization
 ;--------------------------------------------------------------
 via_init:
-			sei
-			
 			lda #%00000000 			; T1 disabled, T2 interrupt, SR in ext clk, PB latch disable, PA latch disable
 			sta ACR
 			lda #%01000001 			; CB2 in (rising), CB1 (falling), CA2 in (falling) ; CA1 (rising)
@@ -37,7 +35,6 @@ via_init:
 ; Interrupt Service Routine
 ;--------------------------------------------------------------
 irq:
-			
-			jsr keyboard_interrupt
+			rti
  
 ;--------------------------------------------------------------
