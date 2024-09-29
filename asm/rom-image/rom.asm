@@ -14,37 +14,33 @@
 
 ; Empty : $0000 - $00FF
 
-; Stack: $0100 - $01FF
-
-VALUE = $0300			;  (w)
-MOD10 = $0302			;  (w)
-NUMBER = $0308			;  (w)
+; Stack: $0100 - $03FF
 
 MESSAGE = $0400			; LCD Print Message (256 b)
 
-BLOCK_LENGTH = $0500	; Block Length (b)
-BLOCK_LOCATION = $0501	; Block Location (w)
+BLOCK_LENGTH = $0500            ; Block Length (b)
+BLOCK_LOCATION = $0501	        ; Block Location (w)
 
 ; Empty: $0700 - $3FFF
 
 ; Not addressable: $4000 - $5FFF
 
-PORTB = $6000			; 
-PORTA = $6001
-DDRB = $6002
-DDRA = $6003
-T1CL = $6004
-T1CH = $6005
-T1LL = $6006
-T1LH = $6007
-T2CL = $6008
-T2CH = $6009
-SR = $600A
-ACR = $600B
-PCR = $600C
-IFR = $600D
-IER = $600E
-PORTA_NH = $600F
+PORTB = $6000			; VIA port B (LCD Module Data)
+PORTA = $6001                   ; VIA port A (LCD Module Control)
+DDRB = $6002                    ; VIA port B direction register
+DDRA = $6003                    ; VIA port A direction register
+T1CL = $6004                    ; VIA timer 1 count low byte
+T1CH = $6005                    ; VIA timer 1 count high byte
+T1LL = $6006                    ; VIA timer 1 load low byte
+T1LH = $6007                    ; VIA timer 1 load high byte
+T2CL = $6008                    ; VIA timer 2 count low byte
+T2CH = $6009                    ; VIA timer 2 count high byte
+SR = $600A                      ; VIA status register
+ACR = $600B                     ; VIA 
+PCR = $600C                     ; VIA 
+IFR = $600D                     ; VIA interrupt flag register
+IER = $600E                     ; VIA interrupt enable register
+PORTA_NH = $600F                ; VIA 
 
 ; Not addressable: $6010 - $7FFF
 
