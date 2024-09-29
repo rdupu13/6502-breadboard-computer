@@ -1,0 +1,1 @@
+brk bpl jsr bmi rti bvc rts bvs bcc ldy bcs cpy bne cpx beq ora and eor adc sta lda cmp sbc asl rol lsr ror stx ldx dec inc php clc plp sec pha cli pla sei dey tya tay clv iny cld inx sed txa txs tax tsx dex nop bit jmp sty ldy

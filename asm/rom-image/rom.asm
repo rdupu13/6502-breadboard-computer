@@ -25,22 +25,22 @@ BLOCK_LOCATION = $0501	        ; Block Location (w)
 
 ; Not addressable: $4000 - $5FFF
 
-PORTB = $6000			; VIA port B (LCD Module Data)
-PORTA = $6001                   ; VIA port A (LCD Module Control)
-DDRB = $6002                    ; VIA port B direction register
-DDRA = $6003                    ; VIA port A direction register
-T1CL = $6004                    ; VIA timer 1 count low byte
-T1CH = $6005                    ; VIA timer 1 count high byte
-T1LL = $6006                    ; VIA timer 1 load low byte
-T1LH = $6007                    ; VIA timer 1 load high byte
-T2CL = $6008                    ; VIA timer 2 count low byte
-T2CH = $6009                    ; VIA timer 2 count high byte
-SR = $600A                      ; VIA status register
-ACR = $600B                     ; VIA 
-PCR = $600C                     ; VIA 
-IFR = $600D                     ; VIA interrupt flag register
-IER = $600E                     ; VIA interrupt enable register
-PORTA_NH = $600F                ; VIA 
+PORTB = $6000			; VIA port B                      LCD Module Data
+PORTA = $6001			; VIA port A                      LCD Module Control
+DDRB = $6002			; VIA port B direction register   
+DDRA = $6003			; VIA port A direction register   
+T1CL = $6004			; VIA timer 1 count low byte      
+T1CH = $6005			; VIA timer 1 count high byte     
+T1LL = $6006			; VIA timer 1 latches low byte    
+T1LH = $6007			; VIA timer 1 latches high byte   
+T2CL = $6008			; VIA timer 2 count low byte      
+T2CH = $6009			; VIA timer 2 count high byte     
+SR = $600A				; VIA shift register              
+ACR = $600B				; VIA auxillary control register  
+PCR = $600C				; VIA peripheral control register 
+IFR = $600D				; VIA interrupt flag register     
+IER = $600				; VIA interrupt enable register   
+PORTA_NH = $600F		; VIA port A (no handshake)       LCD Module Data
 
 ; Not addressable: $6010 - $7FFF
 

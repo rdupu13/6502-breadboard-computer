@@ -18,7 +18,7 @@
 ; Subroutine: Chip initialization
 ;--------------------------------------------------------------
 via_init:
-			cli
+			sei
 			
 			lda #%00000000 			; T1 disabled, T2 interrupt, SR in ext clk, PB latch disable, PA latch disable
 			sta ACR
