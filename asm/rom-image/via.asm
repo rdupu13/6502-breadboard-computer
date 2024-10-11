@@ -35,6 +35,14 @@ via_init:
 ; Interrupt Service Routine
 ;--------------------------------------------------------------
 irq:
+			inc NUMBER
+			bcc end_irq
+			inc NUMBER + 1
+end_irq:
+			jsr print_int
+			lda #%00000001 			; Clear display
+			jsr lcd_instruction
+			
 			rti
  
 ;--------------------------------------------------------------

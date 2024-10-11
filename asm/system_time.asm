@@ -70,10 +70,101 @@ reset:
 			jsr via_init
 			jsr lcd_init
 			
+			lda #$00				; Second = 0
+			sta TIME_SECONDS
+			lda #$13				; Minute = 19
+			sta TIME_MINUTES
+			lda #$0F				; Hour = 15
+			sta TIME_HOURS
+
+			lda #$1D				; Day = 29
+			sta DATE_DAY
+			lda #$09				; Month = 9
+			sta DATE_MONTH
+			lda #$E8				; Year = 2024
+			sta DATE_YEAR
+			lda #$07
+			sta DATE_YEAR + 1
+			
 			cli
 main:		
+			jsr print_time			; Print system time to LCD display
+			
+			
+			jsr add_second			; Add 1 second to system time
 			
 			jmp main
+
+;--------------------------------------------------------------
+; Subroutine: Print current system time on LCD
+;--------------------------------------------------------------
+print_time:
+			pha
+			
+			lda #%00000001 			; Clear display
+			jsr lcd_instruction
+			
+			lda TIME_HOURS
+			sta NUMBER
+			lda #$00
+			sta NUMBER + 1
+			jsr print_int
+			
+			lda #':'
+			jsr print_char
+			
+			lda TIME_MINUTES
+			sta NUMBER
+			lda #$00
+			sta NUMBER + 1
+			jsr print_int
+			
+			lda #':'
+			jsr print_char
+			
+			lda TIME_SECONDS
+			sta NUMBER
+			lda #$00
+			sta NUMBER + 1
+			jsr print_int
+			
+			pla
+			rts
+			
+;--------------------------------------------------------------
+; Subroutine: Add 1 second to time
+;--------------------------------------------------------------
+add_second:
+			pha
+			
+			inc TIME_SECONDS
+			
+			lda TIME_SECONDS
+			cmp #$3C				; 60
+			bmi end_add_second
+			lda #$00
+			sta TIME_SECONDS
+			
+			inc TIME_MINUTES
+			
+			lda TIME_MINUTES
+			cmp #$3C				; 60
+			bmi end_add_second
+			lda #$00
+			sta TIME_MINUTES
+			
+			inc TIME_HOURS
+			
+			lda TIME_HOURS
+			cmp #$18				; 24
+			bmi end_add_second
+			lda #$00
+			sta TIME_HOURS
+end_add_second:
+			
+			pla
+			rts
+
 ;--------------------------------------------------------------
 ; Includes
 ;--------------------------------------------------------------
@@ -83,16 +174,15 @@ main:
 ;--------------------------------------------------------------
 ; Non-maskable Interrupt Service Routine
 ;--------------------------------------------------------------
-nmi:		
-			
-			
+nmi:
 			rti
+
 ;--------------------------------------------------------------
 ; Read-Only Data
 ;--------------------------------------------------------------
 	.org 	$C000 ; $4000 in ROM
 data:
-	.string "Non-Maskable Interrupt!!!"
+	.string "Hello, world!"
 	.byte 	$00
 
 ;--------------------------------------------------------------

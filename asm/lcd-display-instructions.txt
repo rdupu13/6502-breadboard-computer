@@ -1,0 +1,19 @@
+Function set
+00111000 ; Set 8-bit mode; 2-line display; 5x8 font
+enable
+
+Display on/off control
+00001111 ; Display on; cursor on; blink on
+enable
+
+Entry mode set
+00000110 ; Increment and shift cursor; don't shift entire display
+enable
+
+Clear display
+00000001 ; Clear display
+enable
+
+Return home
+00000010 ; Return home
+enable
